@@ -1,4 +1,3 @@
-// src/screens/ProductDetailScreen.js
 import React, { useState } from 'react';
 import {
   View,
@@ -10,15 +9,16 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import tw from 'twrnc';
+import { useCart } from '../../context/cartContext'; // Import useCart to manage cart
 
 const ProductDetailScreen = ({ route, navigation }) => {
   const { product, relatedProducts } = route.params;
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart(); // Access addToCart from CartContext
 
   const handleAddToCart = () => {
-    // Add to cart logic here
+    addToCart(product, quantity); // Add product with selected quantity to cart
     Alert.alert('Success', `${quantity} ${product.name} added to cart!`);
-    // You can implement your cart state management here
   };
 
   const handleRelatedProductPress = relatedProduct => {
@@ -106,15 +106,6 @@ const ProductDetailScreen = ({ route, navigation }) => {
               Add to Cart - {product.price}
             </Text>
           </TouchableOpacity>
-
-          {/* Buy Now Button */}
-          {/* <TouchableOpacity
-            style={tw`border-2 border-amber-700 rounded-2xl py-4 mt-3`}
-          >
-            <Text style={tw`text-amber-900 text-center text-lg font-bold`}>
-              Buy Now
-            </Text>
-          </TouchableOpacity> */}
         </View>
 
         {/* Related Products Section */}

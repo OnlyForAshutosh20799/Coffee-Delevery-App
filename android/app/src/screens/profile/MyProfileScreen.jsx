@@ -14,12 +14,12 @@ const MyProfileScreen = () => {
   })
 
   const [address, setAddress] = useState({
-    street: '123 Coffee Street',
+    street: 'Near St. Johns School',
     apartment: 'Apt 4B',
-    city: 'New York',
-    state: 'NY',
-    zipCode: '10001',
-    country: 'United States',
+    city: 'Patna',
+    state: 'Bihar',
+    zipCode: '802215',
+    country: 'India',
     isDefault: true
   })
 

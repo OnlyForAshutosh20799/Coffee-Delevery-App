@@ -86,25 +86,25 @@ const HomeScreen = () => {
       id: 1,
       name: 'Caramel Macchiato',
       description: 'Rich espresso with vanilla syrup and caramel drizzle',
-      price: '$4.99',
+      price: 499,
       image:
         'https://images.unsplash.com/photo-1561047029-3000c68339ca?w=300&h=300&fit=crop',
-      rating: 4.8,
+      rating: 488,
     },
     {
       id: 2,
       name: 'Cold Brew',
       description: 'Smooth cold brew with notes of chocolate',
-      price: '$3.99',
+      price: 499,
       image:
         'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=300&h=300&fit=crop',
-      rating: 4.6,
+      rating: 460,
     },
     {
       id: 3,
       name: 'Cappuccino',
       description: 'Classic Italian coffee with foamed milk',
-      price: '$3.49',
+      price: 100,
       image:
         'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=300&h=300&fit=crop',
       rating: 4.7,
@@ -117,7 +117,7 @@ const HomeScreen = () => {
       id: 1,
       name: 'Chocolate Muffin',
       description: 'Rich chocolate',
-      price: '$2.99',
+      price: 99,
       image:
         'https://images.unsplash.com/photo-1635952282017-a1d2bf2418be?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2hvY29sYXRlJTIwbXVmZmluc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=700',
     },
@@ -125,7 +125,7 @@ const HomeScreen = () => {
       id: 2,
       name: 'Cinnamon Roll',
       description: 'Sweet cinnamon swirls with icing',
-      price: '$3.49',
+      price: 49,
       image:
         'https://images.unsplash.com/photo-1578633701951-3a2a5318e2f0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNpbm5hbW9uJTIwcm9sbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=700',
     },
@@ -133,7 +133,7 @@ const HomeScreen = () => {
       id: 3,
       name: 'Iced Tea',
       description: 'Refreshing lemon iced tea',
-      price: '$1.99',
+      price: 199,
       image:
         'https://images.unsplash.com/photo-1654923064639-834d2bf32716?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGljZWQlMjB0ZWF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=700',
     },
@@ -141,7 +141,7 @@ const HomeScreen = () => {
       id: 4,
       name: 'Cheese Toasties',
       description: 'Buttery, crispy',
-      price: '$1.99',
+      price: 189,
       image:
         'https://plus.unsplash.com/premium_photo-1695127909043-86a3dce3f65e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fENoZWVzZSUyMHRvYXN0aWVzfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=700',
     },
@@ -149,7 +149,7 @@ const HomeScreen = () => {
       id: 5,
       name: 'Fruit Smoothie',
       description: 'Mixed berry smoothie',
-      price: '$4.49',
+      price: 449,
       image:
         'https://images.unsplash.com/photo-1600718374662-0483d2b9da44?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJ1aXQlMjBzbW9vdGhpZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=700',
     },
@@ -157,7 +157,7 @@ const HomeScreen = () => {
       id: 6,
       name: 'Samosas',
       description: 'Spicy, crispy, crunchy',
-      price: '$4.49',
+      price: 440,
       image:
         'https://plus.unsplash.com/premium_photo-1695297516710-854716c51121?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U2Ftb3Nhc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=700',
     },

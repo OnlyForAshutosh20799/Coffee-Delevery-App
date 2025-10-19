@@ -40,7 +40,7 @@ const ContactUs = () => {
     {
       icon: 'email',
       title: 'Email Us',
-      description: 'support@brewbean.com',
+      description: 'rohit@bgmail.com',
       action: () => Linking.openURL('mailto:support@abc.com'),
       color: '#2563eb'
     },

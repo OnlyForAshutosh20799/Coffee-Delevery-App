@@ -26,7 +26,6 @@ const ProfileScreen = () => {
       items: [
         { icon: 'person', label: 'Manage Profile', color: '#6F4E37' },
         { icon: 'notifications', label: 'Notifications', color: '#6F4E37', badge: 2 },
-        { icon: 'favorite', label: 'My Wishlist', color: '#6F4E37' },
         { icon: 'shopping-bag', label: 'My Orders', color: '#6F4E37' },
         { icon: 'bookmark', label: 'Saved Address', color: '#6F4E37' },
       ],
@@ -34,10 +33,9 @@ const ProfileScreen = () => {
     {
       title: 'Support',
       items: [
-        { icon: 'help', label: 'Help & FAQ', color: '#6F4E37' },
+        { icon: 'help', label: 'Help', color: '#6F4E37' },
         { icon: 'contact-support', label: 'Contact Us', color: '#6F4E37' },
         { icon: 'info', label: 'About Us', color: '#6F4E37' },
-        { icon: 'settings', label: 'App Settings', color: '#6F4E37' },
       ],
     },
   ];
@@ -46,15 +44,17 @@ const ProfileScreen = () => {
     if (item.label === 'Manage Profile') {
       navigation.navigate('MyProfileScreen'); 
     } else if (item.label === 'Notifications') {
-      navigation.navigate('NotificationsScreen'); 
+      navigation.navigate('Notification'); 
     } else if (item.label === 'My Wishlist') {
       navigation.navigate('Wishlist'); 
     } else if (item.label === 'My Orders'){
-      navigation.navigate('Orders')
+      navigation.navigate('Order')
     } else if(item.label === 'Saved Address'){
       navigation.navigate('SavedAddressList')
     } else if(item.label === 'Contact Us'){
       navigation.navigate('ContectUs')
+    } else if(item.label === 'Help'){
+      navigation.navigate('Help')
     }
   
   };
@@ -93,7 +93,7 @@ const ProfileScreen = () => {
             {section.items.map((item, itemIndex) => (
               <TouchableOpacity
                 key={itemIndex}
-                onPress={() => handleClick(item)} // <-- fix here: wrap in arrow function
+               onPress={() => hanleClick(item)} 
                 style={tw`flex-row justify-between items-center py-4 px-5 ${
                   itemIndex < section.items.length - 1 ? 'border-b border-amber-100' : ''
                 }`}
