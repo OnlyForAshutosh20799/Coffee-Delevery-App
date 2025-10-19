@@ -68,7 +68,7 @@ export default function BottomTabs() {
       })}
     >
       <Tab.Screen name="HomeTab" component={HomeStack} options={{ title: 'Home' }} />
-      <Tab.Screen name="OrdersTab" component={OrderStack} options={{ title: 'Orders' }} />
+      {/* <Tab.Screen name="OrdersTab" component={OrderStack} options={{ title: 'Orders' }} /> */}
       <Tab.Screen name="CartTab" component={CartStack} options={{ title: 'Cart' }} />
     </Tab.Navigator>
   );
