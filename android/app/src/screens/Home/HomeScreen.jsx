@@ -73,7 +73,7 @@ const HomeScreen = () => {
     { name: 'Espresso', iconName: 'cafe-outline' },
     { name: 'Cold Brew', iconName: 'snow-outline' },
     { name: 'Latte', iconName: 'cafe-outline' },
-    { name: 'Cappuccino', iconName: 'coffee-outline' },
+    { name: 'Cappuccino', iconName: 'cafe-outline' },
     { name: 'Mocha', iconName: 'cafe-outline' },
     { name: 'Americano', iconName: 'cafe-outline' },
     { name: 'Macchiato', iconName: 'cafe-outline' },

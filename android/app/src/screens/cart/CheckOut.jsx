@@ -2,7 +2,7 @@ import { Text, View, ScrollView, TouchableOpacity, Image, TextInput, Alert, Moda
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import tw from 'twrnc'
-import { useCart } from '../../context/cartContext'; 
+import { useCart } from '../../context/CartContext'; 
 import { useNavigation } from '@react-navigation/native';
 
 const CheckoutScreen = () => {

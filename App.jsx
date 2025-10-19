@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabs from './android/app/src/navigation/BottomTabs';
 import Header from './android/app/src/components/Header';
 import ProfileStack from './android/app/src/navigation/stack/profileStack/ProfileStack';
-import {CartProvider } from './android/app/src/context/cartContext'
+import {CartProvider } from './android/app/src/context/CartContext'
 
 const Stack = createNativeStackNavigator();
 

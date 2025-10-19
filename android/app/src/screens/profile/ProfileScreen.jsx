@@ -93,7 +93,7 @@ const ProfileScreen = () => {
             {section.items.map((item, itemIndex) => (
               <TouchableOpacity
                 key={itemIndex}
-               onPress={() => hanleClick(item)} 
+                onPress={() => handleClick(item)}
                 style={tw`flex-row justify-between items-center py-4 px-5 ${
                   itemIndex < section.items.length - 1 ? 'border-b border-amber-100' : ''
                 }`}

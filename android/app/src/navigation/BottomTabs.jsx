@@ -6,7 +6,7 @@ import CartStack from '../../src/navigation/stack/CartStack';
 import OrderStack from '../../src/navigation/stack/OrderStack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import tw from 'twrnc';
-import { useCart } from '../context/cartContext'; // Import useCart to access cart items
+import { useCart } from '../context/CartContext'; // Import useCart to access cart items
 
 const Tab = createBottomTabNavigator();
 

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import tw from 'twrnc';
-import { useCart } from '../../context/cartContext'; // Import useCart to manage cart
+import { useCart } from '../../context/CartContext'; // Import useCart to manage cart
 
 const ProductDetailScreen = ({ route, navigation }) => {
   const { product, relatedProducts } = route.params;
