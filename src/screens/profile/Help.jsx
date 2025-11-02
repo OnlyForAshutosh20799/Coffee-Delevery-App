@@ -171,8 +171,8 @@ const HelpScreen = () => {
   return (
     <View style={tw`flex-1 bg-amber-50`}>
       {/* Header */}
-      <View style={tw`bg-amber-100 pt-5 pb-8 px-6`}>
-        <Text style={tw`text-3xl font-bold text-amber-800 text-center mb-2`}>Help & Support</Text>
+      <View style={tw`bg-amber-100 pt-11 pb-5 px-6`}>
+        <Text style={tw`text-2xl font-bold text-amber-800 text-center`}>Help & Support</Text>
         <Text style={tw`text-amber-700 text-center text-base`}>
           We're here to help you with any questions
         </Text>

@@ -4,12 +4,18 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  useWindowDimensions,
 } from 'react-native';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import tw from 'twrnc';
 
+// Responsive scaling utility
+const scaleSize = (size, width) => (width < 380 ? size * 0.9 : width < 600 ? size : size * 1.2);
+
 const NotificationsScreen = () => {
+  const { width, height } = useWindowDimensions();
+
   const [notifications, setNotifications] = useState([
     {
       id: 1,
@@ -26,8 +32,7 @@ const NotificationsScreen = () => {
       id: 2,
       type: 'promotion',
       title: 'Special Offer!',
-      message:
-        'Get 20% off on all cold brews this weekend. Limited time offer!',
+      message: 'Get 20% off on all cold brews this weekend. Limited time offer!',
       time: '1 hour ago',
       read: false,
       image:
@@ -38,8 +43,7 @@ const NotificationsScreen = () => {
       id: 3,
       type: 'delivery',
       title: 'Out for Delivery',
-      message:
-        'Rajesh is on the way with your order. Expected delivery in 15-20 min',
+      message: 'Rajesh is on the way with your order. Expected delivery in 15-20 min',
       time: '2 hours ago',
       read: true,
       image:
@@ -60,9 +64,9 @@ const NotificationsScreen = () => {
     },
   ]);
 
-  const [activeTab, setActiveTab] = useState('all'); // 'all', 'unread'
+  const [activeTab, setActiveTab] = useState('all');
 
-  const getNotificationIcon = type => {
+  const getNotificationIcon = (type) => {
     switch (type) {
       case 'order':
         return 'shopping-bag';
@@ -79,7 +83,7 @@ const NotificationsScreen = () => {
     }
   };
 
-  const getNotificationColor = type => {
+  const getNotificationColor = (type) => {
     switch (type) {
       case 'order':
         return '#059669'; // Green
@@ -96,100 +100,108 @@ const NotificationsScreen = () => {
     }
   };
 
-  const handleNotificationPress = notification => {
-    setNotifications(prev =>
-      prev.map(item =>
-        item.id === notification.id ? { ...item, read: true } : item,
-      ),
+  const handleNotificationPress = (notification) => {
+    setNotifications((prev) =>
+      prev.map((item) =>
+        item.id === notification.id ? { ...item, read: true } : item
+      )
     );
   };
 
   const handleMarkAllAsRead = () => {
-    setNotifications(prev => prev.map(item => ({ ...item, read: true })));
+    setNotifications((prev) => prev.map((item) => ({ ...item, read: true })));
   };
-
 
   const filteredNotifications =
     activeTab === 'unread'
-      ? notifications.filter(item => !item.read)
+      ? notifications.filter((item) => !item.read)
       : notifications;
 
-  const unreadCount = notifications.filter(item => !item.read).length;
+  const unreadCount = notifications.filter((item) => !item.read).length;
 
   return (
     <View style={tw`flex-1 bg-amber-50`}>
       {/* Header */}
-      <View style={tw`bg-amber-100 pt-5 pb-6 px-6`}>
+      <View style={tw`bg-amber-100 pt-10 pb-6 px-6`}>
         <View style={tw`flex-row justify-between items-center`}>
           <View>
-            <Text style={tw`text-2xl font-bold text-amber-800`}>
+            <Text
+              style={[
+                tw`font-bold text-amber-800`,
+                { fontSize: scaleSize(22, width) },
+              ]}
+            >
               Notifications
             </Text>
-            <Text style={tw`text-amber-700 mt-1`}>
-              {unreadCount} unread {unreadCount === 1 ? 'message' : 'messages'}
+            <Text
+              style={[
+                tw`text-amber-700 mt-1`,
+                { fontSize: scaleSize(14, width) },
+              ]}
+            >
+              {unreadCount} unread{' '}
+              {unreadCount === 1 ? 'message' : 'messages'}
             </Text>
           </View>
-          <View style={tw`flex-row space-x-2`}>
-            <TouchableOpacity
-              style={tw`bg-amber-700 px-3 py-2 rounded-full`}
-              onPress={handleMarkAllAsRead}
+
+          <TouchableOpacity
+            style={tw`bg-amber-700 px-3 py-2 rounded-full`}
+            onPress={handleMarkAllAsRead}
+          >
+            <Text
+              style={[
+                tw`text-amber-50 font-semibold`,
+                { fontSize: scaleSize(12, width) },
+              ]}
             >
-              <Text style={tw`text-amber-50 text-sm font-semibold`}>
-                Mark All Read
-              </Text>
-            </TouchableOpacity>
-          </View>
+              Mark All Read
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
 
       {/* Tab Bar */}
       <View style={tw`flex-row bg-white border-b border-amber-200`}>
-        <TouchableOpacity
-          style={tw`flex-1 py-4 items-center ${
-            activeTab === 'all' ? 'border-b-2 border-amber-700' : ''
-          }`}
-          onPress={() => setActiveTab('all')}
-        >
-          <Text
-            style={tw`text-base font-semibold ${
-              activeTab === 'all' ? 'text-amber-900' : 'text-amber-600'
+        {['all', 'unread'].map((tab) => (
+          <TouchableOpacity
+            key={tab}
+            style={tw`flex-1 py-4 items-center ${
+              activeTab === tab ? 'border-b-2 border-amber-700' : ''
             }`}
+            onPress={() => setActiveTab(tab)}
           >
-            All Notifications
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={tw`flex-1 py-4 items-center ${
-            activeTab === 'unread' ? 'border-b-2 border-amber-700' : ''
-          }`}
-          onPress={() => setActiveTab('unread')}
-        >
-          <View style={tw`flex-row items-center`}>
-            <Text
-              style={tw`text-base font-semibold ${
-                activeTab === 'unread' ? 'text-amber-900' : 'text-amber-600'
-              }`}
-            >
-              Unread
-            </Text>
-            {unreadCount > 0 && (
-              <View
-                style={tw`bg-red-500 w-5 h-5 rounded-full items-center justify-center ml-2`}
+            <View style={tw`flex-row items-center`}>
+              <Text
+                style={[
+                  tw`font-semibold`,
+                  {
+                    fontSize: scaleSize(14, width),
+                    color:
+                      activeTab === tab ? '#78350f' : '#a16207',
+                  },
+                ]}
               >
-                <Text style={tw`text-white text-xs font-bold`}>
-                  {unreadCount}
-                </Text>
-              </View>
-            )}
-          </View>
-        </TouchableOpacity>
+                {tab === 'all' ? 'All Notifications' : 'Unread'}
+              </Text>
+              {tab === 'unread' && unreadCount > 0 && (
+                <View
+                  style={tw`bg-red-500 w-5 h-5 rounded-full items-center justify-center ml-2`}
+                >
+                  <Text style={tw`text-white text-xs font-bold`}>
+                    {unreadCount}
+                  </Text>
+                </View>
+              )}
+            </View>
+          </TouchableOpacity>
+        ))}
       </View>
 
       {/* Notifications List */}
       <ScrollView style={tw`flex-1`} showsVerticalScrollIndicator={false}>
         <View style={tw`p-4`}>
           {filteredNotifications.length > 0 ? (
-            filteredNotifications.map(notification => (
+            filteredNotifications.map((notification) => (
               <TouchableOpacity
                 key={notification.id}
                 onPress={() => handleNotificationPress(notification)}
@@ -204,59 +216,84 @@ const NotificationsScreen = () => {
                 {/* Icon */}
                 <View
                   style={[
-                    tw`w-12 h-12 rounded-full items-center justify-center mr-3`,
+                    tw`items-center justify-center mr-3 rounded-full`,
                     {
-                      backgroundColor: `${getNotificationColor(
-                        notification.type,
-                      )}15`,
+                      width: scaleSize(50, width),
+                      height: scaleSize(50, width),
+                      backgroundColor: `${getNotificationColor(notification.type)}15`,
                     },
                   ]}
                 >
                   {notification.image ? (
                     <Image
                       source={{ uri: notification.image }}
-                      style={tw`w-10 h-10 rounded-full`}
+                      style={{
+                        width: scaleSize(45, width),
+                        height: scaleSize(45, width),
+                        borderRadius: scaleSize(45, width) / 2,
+                      }}
                     />
                   ) : (
                     <Icon
                       name={getNotificationIcon(notification.type)}
-                      size={24}
+                      size={scaleSize(22, width)}
                       color={getNotificationColor(notification.type)}
                     />
                   )}
                 </View>
 
-                {/* Content */}
+                {/* Text Content */}
                 <View style={tw`flex-1`}>
                   <View style={tw`flex-row justify-between items-start mb-1`}>
-                    <Text style={tw`text-amber-900 font-bold text-base flex-1`}>
+                    <Text
+                      style={[
+                        tw`font-bold text-amber-900 flex-1`,
+                        { fontSize: scaleSize(15, width) },
+                      ]}
+                    >
                       {notification.title}
                     </Text>
                     {!notification.read && (
                       <View style={tw`w-2 h-2 bg-red-500 rounded-full ml-2`} />
                     )}
                   </View>
-                  <Text style={tw`text-amber-600 text-sm leading-5`}>
+                  <Text
+                    style={[
+                      tw`text-amber-700 leading-5`,
+                      { fontSize: scaleSize(13, width) },
+                    ]}
+                  >
                     {notification.message}
                   </Text>
-                  <Text style={tw`text-amber-400 text-xs mt-2`}>
+                  <Text
+                    style={[
+                      tw`text-amber-400 mt-2`,
+                      { fontSize: scaleSize(11, width) },
+                    ]}
+                  >
                     {notification.time}
                   </Text>
                 </View>
               </TouchableOpacity>
             ))
           ) : (
-            <View style={tw`items-center justify-center py-16`}>
-              <Icon name="notifications-off" size={80} color="#A67B5B" />
+            <View style={tw`items-center justify-center py-20`}>
+              <Icon name="notifications-off" size={scaleSize(80, width)} color="#A67B5B" />
               <Text
-                style={tw`text-2xl font-bold text-amber-900 mt-6 text-center`}
+                style={[
+                  tw`font-bold text-amber-900 mt-6 text-center`,
+                  { fontSize: scaleSize(20, width) },
+                ]}
               >
                 {activeTab === 'unread'
                   ? 'No Unread Notifications'
                   : 'No Notifications'}
               </Text>
               <Text
-                style={tw`text-amber-600 text-center mt-3 text-base leading-6 px-8`}
+                style={[
+                  tw`text-amber-600 text-center mt-3 px-8`,
+                  { fontSize: scaleSize(14, width) },
+                ]}
               >
                 {activeTab === 'unread'
                   ? "You're all caught up! No unread notifications."
